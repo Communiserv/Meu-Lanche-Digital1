@@ -1,0 +1,5 @@
+{
+  "name": "Meu Lanche Digital",
+  "description": "A platform for managing school canteen purchases, allowing parents to add credits, students to buy with QR codes, and canteens to manage sales.",
+  "requestFramePermissions": []
+}
