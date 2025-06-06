@@ -9,7 +9,7 @@ export type Json =
 export interface Database {
   public: {
     Tables: {
-      profiles: {
+      user_profiles: {
         Row: {
           id: string
           email: string
@@ -81,7 +81,7 @@ export interface Database {
           created_at: string
         }
         Insert: {
-          id: string
+          id?: string
           parent_id: string
           canteen_id: string
           full_name: string
@@ -117,7 +117,7 @@ export interface Database {
           created_at: string
         }
         Insert: {
-          id: string
+          id?: string
           canteen_id: string
           name: string
           description?: string | null
@@ -149,7 +149,7 @@ export interface Database {
           created_at: string
         }
         Insert: {
-          id: string
+          id?: string
           student_id: string
           canteen_id: string
           items: Json
@@ -182,7 +182,7 @@ export interface Database {
           created_at: string
         }
         Insert: {
-          id: string
+          id?: string
           student_id: string
           parent_id?: string | null
           type: 'credit' | 'debit'

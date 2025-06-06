@@ -24,43 +24,43 @@ const ParentDashboardPage: React.FC = () => {
       setError(null);
       
       try {
-        const { data: studentsData, error: studentsError } = await supabase
-          .from('students')
-          .select('*')
+      const { data: studentsData, error: studentsError } = await supabase
+        .from('students')
+        .select('*')
           .eq('parent_id', profile.parent_id)
-          .query(); 
+        .query(); 
 
-        if (studentsError) {
-          console.error('Error fetching children:', studentsError);
+      if (studentsError) {
+        console.error('Error fetching children:', studentsError);
           setError('Falha ao carregar dados dos filhos. Tente novamente.');
-        } else {
-          setChildren(studentsData || []);
-        }
+      } else {
+        setChildren(studentsData || []);
+      }
 
-        if (studentsData && studentsData.length > 0) {
+      if (studentsData && studentsData.length > 0) {
           const studentIds = studentsData.map((s: Student) => s.id);
-          
-          const { data: allMockTransactions, error: transactionsError } = await supabase
-            .from('transactions')
-            .select('*')
-            .query(); 
         
-          if (transactionsError) {
-            console.error('Error fetching transactions:', transactionsError);
+        const { data: allMockTransactions, error: transactionsError } = await supabase
+          .from('transactions')
+          .select('*')
+          .query(); 
+      
+        if (transactionsError) {
+          console.error('Error fetching transactions:', transactionsError);
             setError('Falha ao carregar transações. Tente novamente.');
-          } else {
-            const filteredTransactions = (allMockTransactions || [])
-              .filter((t: Transaction) => studentIds.includes(t.student_id))
-              .sort((a: Transaction, b: Transaction) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime())
-              .slice(0,5);
-            setRecentTransactions(filteredTransactions);
-          }
+        } else {
+          const filteredTransactions = (allMockTransactions || [])
+            .filter((t: Transaction) => studentIds.includes(t.student_id))
+            .sort((a: Transaction, b: Transaction) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime())
+            .slice(0,5);
+          setRecentTransactions(filteredTransactions);
         }
+      }
       } catch (err) {
         console.error('Unexpected error:', err);
         setError('Ocorreu um erro inesperado. Tente novamente.');
       } finally {
-        setLoading(false);
+      setLoading(false);
       }
     };
 

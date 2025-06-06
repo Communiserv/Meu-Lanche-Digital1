@@ -110,7 +110,7 @@ const StudentMenuPage: React.FC = () => {
                 )}
                 <p className="text-2xl font-bold text-primary">R$ {product.price.toFixed(2)}</p>
               </div>
-            </Card>
+      </Card>
           ))}
         </div>
       )}

@@ -1,3 +1,13 @@
+-- Cleanup existing tables and objects
+DROP TRIGGER IF EXISTS on_auth_user_created ON auth.users;
+DROP FUNCTION IF EXISTS public.handle_new_user();
+DROP TABLE IF EXISTS public.transactions CASCADE;
+DROP TABLE IF EXISTS public.orders CASCADE;
+DROP TABLE IF EXISTS public.products CASCADE;
+DROP TABLE IF EXISTS public.students CASCADE;
+DROP TABLE IF EXISTS public.canteens CASCADE;
+DROP TABLE IF EXISTS public.user_profiles CASCADE;
+
 -- É recomendado não habilitar RLS na tabela auth.users.
 -- Se por algum motivo o RLS estiver habilitado, pode ser desabilitado com:
 -- ALTER TABLE auth.users DISABLE ROW LEVEL SECURITY;
@@ -124,6 +134,14 @@ CREATE POLICY "Users can update their own profile"
     ON public.user_profiles FOR UPDATE
     USING (auth.uid() = id);
 
+-- Modificada a política de inserção para permitir registro inicial
+CREATE POLICY "Allow inserting own profile during registration"
+    ON public.user_profiles FOR INSERT
+    WITH CHECK (
+        auth.uid() = id OR 
+        (auth.uid() IS NOT NULL AND role IN ('canteen', 'parent', 'student', 'admin'))
+    );
+
 -- Create policies for canteens
 CREATE POLICY "Anyone can view canteens"
     ON public.canteens FOR SELECT
@@ -207,8 +225,6 @@ $$ LANGUAGE plpgsql SECURITY DEFINER;
 
 -- Create trigger for new user signup
 DROP TRIGGER IF EXISTS on_auth_user_created ON auth.users;
-
--- Create trigger for new user signup
 CREATE TRIGGER on_auth_user_created
     AFTER INSERT ON auth.users
     FOR EACH ROW EXECUTE FUNCTION public.handle_new_user();

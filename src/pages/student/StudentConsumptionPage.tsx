@@ -96,7 +96,7 @@ const StudentConsumptionPage: React.FC = () => {
                   </span>
                 </div>
               </div>
-            </Card>
+      </Card>
           ))}
         </div>
       )}

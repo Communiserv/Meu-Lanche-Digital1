@@ -59,16 +59,19 @@ const LoginPage: React.FC = () => {
             icon={<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 text-gray-400"><path strokeLinecap="round" strokeLinejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z" /></svg>}
           />
           {error && <p className="text-red-500 text-sm">{error}</p>}
-          <Button type="submit" disabled={loading} fullWidth>
+          <Button type="submit" disabled={loading} fullWidth className="bg-primary-600 hover:bg-primary-700 text-white font-semibold">
             {loading ? 'Entrando...' : 'Entrar'}
           </Button>
+
+          <div className="flex justify-between items-center text-sm">
+            <Link to="/forgot-password" className="text-primary-600 hover:text-primary-700">
+              Esqueceu sua senha?
+            </Link>
+            <Link to="/register" className="text-primary-600 hover:text-primary-700">
+              Criar conta
+            </Link>
+          </div>
         </form>
-        <p className="mt-6 text-center text-sm text-gray-600">
-          Não tem uma conta?{' '}
-          <Link to="/register" className="font-medium text-primary hover:text-primary-dark">
-            Registre-se aqui
-          </Link>
-        </p>
       </Card>
     </div>
   );

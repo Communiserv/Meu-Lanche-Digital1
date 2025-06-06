@@ -42,8 +42,8 @@ const RegisterPage: React.FC = () => {
   }, [user, profile, navigate]);
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary-light via-primary to-primary-dark p-4">
-      <Card title="Registro - Meu Lanche Digital" className="w-full max-w-md">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary-800 via-primary-900 to-primary-950 p-4">
+      <Card title="Registro - Meu Lanche Digital" className="w-full max-w-md bg-white/90">
         <form onSubmit={handleSubmit} className="space-y-6">
           <Input
             label="Nome Completo"
@@ -101,7 +101,7 @@ const RegisterPage: React.FC = () => {
             </select>
           </div>
           {error && <p className="text-red-500 text-sm">{error}</p>}
-          <Button type="submit" disabled={loading} fullWidth>
+          <Button type="submit" disabled={loading} fullWidth className="bg-primary-600 hover:bg-primary-700 text-white font-semibold">
             {loading ? 'Registrando...' : 'Registrar'}
           </Button>
         </form>

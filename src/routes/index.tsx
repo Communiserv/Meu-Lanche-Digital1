@@ -1,30 +1,31 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate, Outlet } from 'react-router-dom';
-import LoginPage from '@pages/auth/LoginPage';
-import RegisterPage from '@pages/auth/RegisterPage';
-import ParentDashboardPage from '@pages/parent/ParentDashboardPage';
-import StudentDashboardPage from '@pages/student/StudentDashboardPage';
-import CanteenDashboardPage from '@pages/canteen/CanteenDashboardPage';
-import NotFoundPage from '@pages/NotFoundPage';
-import HomePage from '@pages/HomePage';
-import { useAuth } from '@contexts/AuthContext';
-import { UserRole } from '@/types/types';
-import CredLanchePage from '@pages/parent/CredLanchePage';
-import QRCodeScanPage from '@pages/canteen/QRCodeScanPage';
-import UnauthorizedPage from '@pages/UnauthorizedPage';
-import Header from '@components/layout/Header';
-import Footer from '@components/layout/Footer';
+import LoginPage from '../pages/auth/LoginPage';
+import RegisterPage from '../pages/auth/RegisterPage';
+import ParentDashboardPage from '../pages/parent/ParentDashboardPage';
+import StudentDashboardPage from '../pages/student/StudentDashboardPage';
+import CanteenDashboardPage from '../pages/canteen/CanteenDashboardPage';
+import NotFoundPage from '../pages/NotFoundPage';
+import HomePage from '../pages/HomePage';
+import { useAuth } from '../contexts/AuthContext';
+import { UserRole } from '../types/types';
+import CredLanchePage from '../pages/parent/CredLanchePage';
+import QRCodeScanPage from '../pages/canteen/QRCodeScanPage';
+import UnauthorizedPage from '../pages/UnauthorizedPage';
+import Header from '../components/layout/Header';
+import Footer from '../components/layout/Footer';
+import ForgotPasswordPage from '../pages/auth/ForgotPasswordPage';
 
 // Placeholder pages
-import ManageChildrenPage from '@pages/parent/ManageChildrenPage';
-import ParentMenuPage from '@pages/parent/ParentMenuPage';
-import ParentConsumptionPage from '@pages/parent/ParentConsumptionPage';
-import StudentMenuPage from '@pages/student/StudentMenuPage';
-import StudentConsumptionPage from '@pages/student/StudentConsumptionPage';
-import StudentManagementPage from '@pages/canteen/StudentManagementPage';
-import ProductManagementPage from '@pages/canteen/ProductManagementPage';
-import ReportsPage from '@pages/canteen/ReportsPage';
-import CanteenApprovalPage from '@pages/admin/CanteenApprovalPage';
+import ManageChildrenPage from '../pages/parent/ManageChildrenPage';
+import ParentMenuPage from '../pages/parent/ParentMenuPage';
+import ParentConsumptionPage from '../pages/parent/ParentConsumptionPage';
+import StudentMenuPage from '../pages/student/StudentMenuPage';
+import StudentConsumptionPage from '../pages/student/StudentConsumptionPage';
+import StudentManagementPage from '../pages/canteen/StudentManagementPage';
+import ProductManagementPage from '../pages/canteen/ProductManagementPage';
+import ReportsPage from '../pages/canteen/ReportsPage';
+import CanteenApprovalPage from '../pages/admin/CanteenApprovalPage';
 
 interface ProtectedRouteProps {
   allowedRoles: UserRole[];
@@ -84,6 +85,7 @@ const AppRoutes: React.FC = () => {
         <Route element={<AuthLayout />}>
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
+          <Route path="/forgot-password" element={<ForgotPasswordPage />} />
         </Route>
 
         {/* Public routes with full layout */}
@@ -122,7 +124,7 @@ const AppRoutes: React.FC = () => {
           
           {/* Admin Routes */}
           <Route element={<ProtectedRoute allowedRoles={[UserRole.ADMIN]} />}>
-            <Route path="/admin/canteens" element={<CanteenApprovalPage />} />
+             <Route path="/admin/canteens" element={<CanteenApprovalPage />} />
           </Route>
         </Route>
 

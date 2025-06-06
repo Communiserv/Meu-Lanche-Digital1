@@ -55,7 +55,7 @@ const ReportsPage: React.FC = () => {
       setStudentsMap(sMap);
       
       // Fetch products of the canteen for "most sold" calculation
-      const { data: productsData, error: productsError } = await supabase
+       const { data: productsData, error: productsError } = await supabase
         .from('products')
         .select('*')
         .eq('canteen_id', profile.canteen_id)
