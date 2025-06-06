@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '@/contexts/AuthContext';
 import { UserRole } from '@/types/types';
 import Button from '@components/ui/Button';
@@ -7,6 +7,12 @@ import Button from '@components/ui/Button';
 const Header: React.FC = () => {
   const { user, profile, signOut } = useAuth();
   const location = useLocation();
+  const navigate = useNavigate();
+
+  const handleSignOut = async () => {
+    await signOut();
+    navigate('/login');
+  };
 
   const isActive = (path: string) => location.pathname === path;
 
@@ -72,12 +78,13 @@ const Header: React.FC = () => {
               </Link>
             ))}
             {user && (
-              <Link
-                to="/logout"
-                className="bg-[#fbbc05] text-white px-4 py-2 rounded-md hover:bg-[#f9a825] transition-colors"
+              <Button
+                onClick={handleSignOut}
+                variant="secondary"
+                className="bg-[#fbbc05] text-white hover:bg-[#f9a825]"
               >
                 Sair
-              </Link>
+              </Button>
             )}
           </div>
         </div>

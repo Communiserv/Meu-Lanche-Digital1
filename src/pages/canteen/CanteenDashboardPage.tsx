@@ -113,24 +113,53 @@ const CanteenDashboardPage: React.FC = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-          <Card className="bg-[#34a853] text-white">
-            <h2 className="text-xl font-semibold mb-1">Receita de Hoje</h2>
-            <p className="text-3xl font-bold">R$ {stats.dailyRevenue.toFixed(2)}</p>
+          <div className="bg-[#34a853] rounded-lg shadow-lg p-6 text-white transform hover:scale-105 transition-transform duration-200">
+            <div className="flex items-center justify-between">
+              <div>
+                <h2 className="text-xl font-semibold mb-1">Receita de Hoje</h2>
+                <p className="text-3xl font-bold">R$ {stats.dailyRevenue.toFixed(2)}</p>
+              </div>
+              <span className="text-4xl">💰</span>
+            </div>
+          </div>
+          <Card className="bg-white shadow-md hover:shadow-lg transition-shadow duration-200">
+            <div className="flex items-center justify-between">
+              <div>
+                <h2 className="text-xl font-semibold text-gray-700 mb-1">Produtos Cadastrados</h2>
+                <p className="text-3xl font-bold text-gray-800">{stats.totalProducts}</p>
+              </div>
+              <span className="text-4xl">🍔</span>
+            </div>
           </Card>
-          <Card className="bg-white">
-            <h2 className="text-xl font-semibold text-gray-700 mb-1">Produtos Cadastrados</h2>
-            <p className="text-3xl font-bold text-gray-800">{stats.totalProducts}</p>
+          <Card className="bg-white shadow-md hover:shadow-lg transition-shadow duration-200">
+            <div className="flex items-center justify-between">
+              <div>
+                <h2 className="text-xl font-semibold text-gray-700 mb-1">Pedidos Pendentes</h2>
+                <p className="text-3xl font-bold text-gray-800">{stats.pendingOrders}</p>
+              </div>
+              <span className="text-4xl">⏳</span>
+            </div>
           </Card>
-          <Card className="bg-white">
-            <h2 className="text-xl font-semibold text-gray-700 mb-1">Pedidos Pendentes</h2>
-            <p className="text-3xl font-bold text-gray-800">{stats.pendingOrders}</p>
-          </Card>
-          <Card className="bg-[#fbbc05] text-white">
-            <h2 className="text-xl font-semibold mb-2">Ações Rápidas</h2>
-            <Link to="/canteen/scan">
-              <Button fullWidth variant="secondary" className="bg-white text-[#fbbc05] hover:bg-gray-100">Escanear QR Code</Button>
-            </Link>
-          </Card>
+          <div className="bg-[#fbbc05] rounded-lg shadow-lg p-6 text-white transform hover:scale-105 transition-transform duration-200">
+            <div className="flex flex-col">
+              <div className="flex items-center justify-between mb-4">
+                <h2 className="text-xl font-semibold">Ações Rápidas</h2>
+                <span className="text-4xl">⚡</span>
+              </div>
+              <Link to="/canteen/scan">
+                <Button 
+                  fullWidth 
+                  variant="secondary" 
+                  className="bg-red-500 text-[#fbbc05] hover:bg-gray-300 transform hover:scale-105 transition-transform duration-200"
+                >
+                  <span className="flex items-center justify-center">
+                    <span className="mr-2">📱</span>
+                    Escanear QR Code
+                  </span>
+                </Button>
+              </Link>
+            </div>
+          </div>
         </div>
         
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
