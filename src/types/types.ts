@@ -1,4 +1,3 @@
-
 export enum UserRole {
   CANTEEN = 'canteen',
   PARENT = 'parent',
@@ -40,6 +39,14 @@ export interface Student {
   created_at: string;
 }
 
+export enum ProductCategory {
+  SNACK = 'snack',
+  DRINK = 'drink',
+  MEAL = 'meal',
+  DESSERT = 'dessert',
+  OTHER = 'other'
+}
+
 export interface Product {
   id: string;
   canteen_id: string;
@@ -48,6 +55,7 @@ export interface Product {
   price: number;
   image_url?: string;
   available: boolean;
+  category: ProductCategory;
   created_at: string;
 }
 
@@ -115,5 +123,21 @@ export interface SupabaseAuthUser {
 export interface SupabaseSession {
   user: SupabaseAuthUser | null;
   // Add other properties from Supabase session if needed
+}
+
+export enum CanteenApprovalStatus {
+  PENDING = 'pending',
+  APPROVED = 'approved',
+  REJECTED = 'rejected',
+}
+
+export interface CanteenApproval {
+  id: string;
+  canteen_id: string;
+  user_id: string;
+  status: CanteenApprovalStatus;
+  admin_notes?: string;
+  created_at: string;
+  updated_at: string;
 }
     

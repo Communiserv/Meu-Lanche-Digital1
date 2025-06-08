@@ -56,7 +56,7 @@ const Header: React.FC = () => {
   };
 
   return (
-    <header className="bg-[#1a73e8] text-white shadow-md sticky top-0 z-50">
+    <header className="bg-gradient-to-r from-[#1a73e8] via-[#4285f4] to-[#34a853] text-white shadow-md sticky top-0 z-50">
       <nav className="container mx-auto px-4 py-3">
         <div className="flex flex-col md:flex-row items-center justify-between">
           <Link to="/" className="flex items-center space-x-2 mb-2 md:mb-0">

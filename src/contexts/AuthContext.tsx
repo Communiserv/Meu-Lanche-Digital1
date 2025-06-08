@@ -92,11 +92,11 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     setLoading(true);
     try {
       const { error: signUpError, data } = await supabase.auth.signUp({ email, password });
-      if (signUpError) throw signUpError;
+    if (signUpError) throw signUpError;
 
       if (data.user) {
-        const { error: profileError } = await supabase
-          .from('user_profiles')
+    const { error: profileError } = await supabase
+      .from('user_profiles')
           .insert([
             {
               id: data.user.id,
@@ -106,7 +106,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
             },
           ]);
 
-        if (profileError) throw profileError;
+    if (profileError) throw profileError;
       }
     } catch (error) {
       console.error('Error signing up:', error);
@@ -119,8 +119,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const signOut = async () => {
     setLoading(true);
     try {
-      const { error } = await supabase.auth.signOut();
-      if (error) throw error;
+    const { error } = await supabase.auth.signOut();
+    if (error) throw error;
     } catch (error) {
       console.error('Error signing out:', error);
       throw error;

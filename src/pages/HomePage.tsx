@@ -50,11 +50,10 @@ const HomePage: React.FC = () => {
             </Link>
           ) : (
             <div className="space-x-4">
-              <Link to="/login">
-                <Button size="lg" variant="secondary">Entrar</Button>
-              </Link>
               <Link to="/register">
-                <Button size="lg" variant="ghost" className="text-white border-white hover:bg-white hover:text-primary">Registrar</Button>
+                <Button size="lg" variant="secondary" className="bg-[#fbbc05] text-white hover:bg-[#f9a825]">
+                  Comece Agora
+                </Button>
               </Link>
             </div>
           )}

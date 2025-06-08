@@ -26,6 +26,7 @@ import StudentManagementPage from '../pages/canteen/StudentManagementPage';
 import ProductManagementPage from '../pages/canteen/ProductManagementPage';
 import ReportsPage from '../pages/canteen/ReportsPage';
 import CanteenApprovalPage from '../pages/admin/CanteenApprovalPage';
+import CanteenRegistrationPage from '../pages/canteen/CanteenRegistrationPage';
 
 interface ProtectedRouteProps {
   allowedRoles: UserRole[];
@@ -116,6 +117,7 @@ const AppRoutes: React.FC = () => {
           {/* Canteen Routes */}
           <Route element={<ProtectedRoute allowedRoles={[UserRole.CANTEEN]} />}>
             <Route path="/canteen/dashboard" element={<CanteenDashboardPage />} />
+            <Route path="/canteen/register" element={<CanteenRegistrationPage />} />
             <Route path="/canteen/scan" element={<QRCodeScanPage />} />
             <Route path="/canteen/students" element={<StudentManagementPage />} />
             <Route path="/canteen/products" element={<ProductManagementPage />} />

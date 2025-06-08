@@ -1,6 +1,7 @@
 import React from 'react';
 import AppRoutes from '@/routes';
 import { AuthProvider } from '@/contexts/AuthContext';
+import { Toaster } from 'react-hot-toast';
 
 const App: React.FC = () => {
   return (
@@ -10,6 +11,7 @@ const App: React.FC = () => {
       <div className="floating-shape" />
     <AuthProvider>
       <AppRoutes />
+      <Toaster position="top-right" />
     </AuthProvider>
     </div>
   );
