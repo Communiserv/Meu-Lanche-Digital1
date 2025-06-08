@@ -15,6 +15,7 @@ import UnauthorizedPage from '../pages/UnauthorizedPage';
 import Header from '../components/layout/Header';
 import Footer from '../components/layout/Footer';
 import ForgotPasswordPage from '../pages/auth/ForgotPasswordPage';
+import ResponsibleRegistrationPage from '@/pages/auth/ResponsibleRegistrationPage';
 
 // Placeholder pages
 import ManageChildrenPage from '../pages/parent/ManageChildrenPage';
@@ -86,6 +87,7 @@ const AppRoutes: React.FC = () => {
         <Route element={<AuthLayout />}>
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
+          <Route path="/register/responsible" element={<ResponsibleRegistrationPage />} />
           <Route path="/forgot-password" element={<ForgotPasswordPage />} />
         </Route>
 
